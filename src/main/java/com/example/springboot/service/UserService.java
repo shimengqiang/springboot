@@ -20,5 +20,12 @@ public class UserService {
         return userList;
     }
 
+    public List<User> findAll(){
+
+        List<User> userList = dao.findAll();
+
+        return userList;
+    }
+
 
 }

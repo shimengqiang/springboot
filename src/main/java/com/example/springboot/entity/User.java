@@ -9,16 +9,16 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    public int id;
 
     @Column(name = "name")
-    private String name;
+    public String name;
 
     @Column(name = "age")
-    private Integer age;
+    public Integer age;
 
     @Column(name = "sex")
-    private String sex;
+    public String sex;
 
     public int getId() {
         return id;
