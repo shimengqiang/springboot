@@ -27,18 +27,9 @@ public class IndexController {
     }
     @ResponseBody
     @RequestMapping("/getUser")
-    public String findByName(@RequestParam("name")String name){
+    public List<User> findByName(){
 
-        List<User> userList = userService.findByName(name);
-
-//        for (int i = 0; i < userList.size(); i++) {
-////
-////         System.out.println(userList.get(i).getSex());
-//
-//        }
-        ModelMap map = new ModelMap();
-        map.addAttribute("userList",userList);
-        return "userList";
+        return userService.findAll();
     }
 
     @RequestMapping("/findAll")//model modelmap 均可
