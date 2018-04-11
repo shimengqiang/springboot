@@ -39,5 +39,10 @@ public class IndexController {
         map.addAttribute("userList",userList);
         return "userList";
     }
+    @RequestMapping("/index")
+    public String index(){
+
+        return "index";
+    }
 
 }
