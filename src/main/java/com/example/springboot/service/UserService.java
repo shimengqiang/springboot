@@ -26,6 +26,10 @@ public class UserService {
 
         return userList;
     }
+    public  User findById(int id){
+
+        return dao.findById(id);
+    }
 
 
 }

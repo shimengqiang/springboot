@@ -2,47 +2,44 @@ package com.example.springboot.controller;
 
 import com.example.springboot.entity.User;
 import com.example.springboot.service.UserService;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class IndexController {
 
     @Autowired
     UserService userService;
 
-    @RequestMapping("/home")
-    public String index(ModelMap model){
+//    @RequestMapping(value = "/home",method = RequestMethod.GET)
+//    public String index(ModelMap model){
+//
+//        model.addAttribute("name","baby");
+//
+//        return "freemaker";
+//    }
+    @RequestMapping(value = "/getByID/{id}",method = RequestMethod.POST)
+    public User findByName(@PathVariable Integer id){
 
-        model.addAttribute("name","baby");
-
-        return "freemaker";
+        return userService.findById(id);
     }
-    @ResponseBody
-    @RequestMapping("/getUser")
-    public List<User> findByName(){
 
-        return userService.findAll();
-    }
-
-    @RequestMapping("/findAll")//model modelmap 均可
-    public String findAll(ModelMap map){
+    @RequestMapping(value = "/findAll",method = RequestMethod.GET)//model modelmap 均可
+    public List<User> findAll(){
 
         List<User> userList = userService.findAll();
-        map.addAttribute("userList",userList);
-        return "userList";
+        return userList;
     }
-    @RequestMapping("/index")
-    public String index(){
-
-        return "index";
-    }
+//    @RequestMapping("/index")
+//    public String index(){
+//
+//        return "index";
+//    }
 
 }
