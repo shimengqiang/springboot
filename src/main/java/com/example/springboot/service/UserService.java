@@ -32,4 +32,13 @@ public class UserService {
     }
 
 
+    public User add(User user) {
+
+    return dao.save(user);
+    }
+
+    public void delById(Integer id) {
+
+        dao.delete(id);
+    }
 }
