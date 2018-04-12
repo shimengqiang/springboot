@@ -36,10 +36,21 @@ public class IndexController {
         List<User> userList = userService.findAll();
         return userList;
     }
-//    @RequestMapping("/index")
-//    public String index(){
-//
-//        return "index";
-//    }
 
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    public User add(@RequestBody User user){
+
+
+        System.out.println(user.getId());
+
+        return userService.add(user);
+    }
+
+    @RequestMapping(value = "/del/{id}",method = RequestMethod.POST)
+    public String delById(@PathVariable Integer id){
+
+
+        userService.delById(id);
+        return "sucess";
+    }
 }
